@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-py3
+FROM tensorflow/tensorflow:latest-gpu-py3
 
 RUN apt-get update && apt-get install -y \
   git build-essential wget vim findutils curl \
@@ -11,7 +11,7 @@ RUN echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.
 RUN pip3 install jupyter matplotlib jupyter_http_over_ws &&\
   jupyter serverextension enable --py jupyter_http_over_ws
 
-RUN git clone https://github.com/waymo-research/waymo-open-dataset.git waymo-od
+RUN git clone https://github.com/shams-sam/waymo-open-dataset.git waymo-od
 WORKDIR /waymo-od
 
 RUN bash ./configure.sh && \
